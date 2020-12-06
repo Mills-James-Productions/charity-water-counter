@@ -100,7 +100,9 @@ async function run() {
 
   //fallback
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+    res.sendFile(
+      path.join(__dirname + "/frontend/charity-water/build/index.html")
+    );
   });
   await app.listen(process.env.PORT);
   console.log(`Listening on port ${process.env.PORT}`);
