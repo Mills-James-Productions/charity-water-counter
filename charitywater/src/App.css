@@ -1,0 +1,10 @@
+.app-wrap {
+  height: 100vh;
+  width: 100vw;
+  background-color: #181818;
+}
+
+.app-data {
+  color: white;
+  font-size: 100px;
+}

@@ -9,8 +9,6 @@ const exjwt = require("express-jwt");
 
 const authRoute = require("./src/routes/authenticate");
 
-run().catch((err) => console.error(err));
-
 async function run() {
   const app = express();
   // minimum security protocol recommended by express
@@ -24,9 +22,9 @@ async function run() {
   app.use(bodyParser.urlencoded({ extended: true }));
   // parse application/json
   app.use(bodyParser.json());
-  app.use(express.static(path.join(__dirname, "frontend/charity-water/build")));
+  app.use(express.static(path.join(__dirname, "/charitywater/build")));
   //
-  console.log(path.join(__dirname, "frontend/charity-water/build"));
+  console.log(path.join(__dirname, "/charitywater/build"));
   // app.use(cors());
 
   const jwtMW = exjwt({
@@ -99,19 +97,20 @@ async function run() {
 
   //fallback
   app.get("*", (req, res) => {
-    res.sendFile(
-      path.join(__dirname + "/frontend/charity-water/build/index.html")
-    );
+    res.sendFile(path.join(__dirname + "/charitywater/build/index.html"));
   });
   await app.listen(process.env.PORT);
   console.log(`Listening on port ${process.env.PORT}`);
-  console.log(`Dirname: ${path.join(__dirname)}`);
+  console.log(
+    `Dirname: ${path.join(__dirname + "/charitywater/build/index.html")}`
+  );
 
   fs.readdir(__dirname, function (err, items) {
     console.log(items);
-
     for (var i = 0; i < items.length; i++) {
       console.log(items[i]);
     }
   });
 }
+
+run().catch((err) => console.error(err));

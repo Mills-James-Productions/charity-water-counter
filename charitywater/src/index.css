@@ -1,0 +1,49 @@
+@font-face {
+  font-family: Proxima Nova;
+  src: url("./fonts/ProximaNova-Semibold.otf") format("opentype");
+}
+
+@font-face {
+  /* font-family: "TiemposFine-Light";
+  src: url("./fonts/TiemposFine-Light.otf") format("otf");
+
+  font-family: "Tiepos-Light-Italic";
+  src: url("./fonts/TiemposFine-LightItalic.otf") format("otf"); */
+
+  font-family: Tiempos-Medium;
+  src: url("./fonts/TiemposFine-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: TiemposFine-Light;
+  src: url("./fonts/TiemposFine-Light.otf") format("opentype");
+}
+@font-face {
+  font-family: "Tiepos-Light-Italic";
+  src: url("./fonts/TiemposFine-LightItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: Minion;
+  src: url("./fonts/MinionPro-Regular.otf") format("opentype");
+}
+
+body {
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h2 {
+  font-family: TiemposFine-Light;
+  font-size: 140px;
+  line-height: auto;
+  margin: 0;
+  padding: 0;
+}
