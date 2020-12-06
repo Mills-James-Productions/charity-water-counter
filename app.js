@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const exjwt = require("express-jwt");
 
-const authRoute = require("./routes/authenticate");
+const authRoute = require("./src/routes/authenticate");
 
 run().catch((err) => console.error(err));
 
@@ -23,11 +23,9 @@ async function run() {
   app.use(bodyParser.urlencoded({ extended: true }));
   // parse application/json
   app.use(bodyParser.json());
-  app.use(
-    express.static(path.join(__dirname, "../frontend/charity-water/build"))
-  );
+  app.use(express.static(path.join(__dirname, "frontend/charity-water/build")));
   //
-  console.log(path.join(__dirname, "../frontend/charity-water/build"));
+  console.log(path.join(__dirname, "frontend/charity-water/build"));
   // app.use(cors());
 
   const jwtMW = exjwt({
@@ -101,7 +99,7 @@ async function run() {
   //fallback
   app.get("*", (req, res) => {
     res.sendFile(
-      path.join(__dirname, "../frontend/charity-water/build/index.html")
+      path.join(__dirname, "frontend/charity-water/build/index.html")
     );
   });
   await app.listen(process.env.PORT);
