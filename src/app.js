@@ -101,7 +101,7 @@ async function run() {
   //fallback
   app.get("*", (req, res) => {
     res.sendFile(
-      path.join(__dirname + "../frontend/charity-water/build/index.html")
+      path.join(__dirname, "../frontend/charity-water/build/index.html")
     );
   });
   await app.listen(process.env.PORT);
