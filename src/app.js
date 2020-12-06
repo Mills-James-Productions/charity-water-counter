@@ -106,4 +106,10 @@ async function run() {
   });
   await app.listen(process.env.PORT);
   console.log(`Listening on port ${process.env.PORT}`);
+  console.log(
+    `Dirname: ${path.join(
+      __dirname,
+      "../../frontend/charity-water/build/index.html"
+    )}`
+  );
 }
