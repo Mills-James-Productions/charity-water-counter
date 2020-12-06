@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     if (!listening) {
-      const events = new EventSource("http://localhost:5000/events");
+      const events = new EventSource("/events");
 
       events.onmessage = (e) => {
         console.log(e.data);
