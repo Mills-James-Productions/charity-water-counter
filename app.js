@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const fs = require("fs");
 const cors = require("cors");
 const exjwt = require("express-jwt");
 
@@ -105,4 +106,12 @@ async function run() {
   await app.listen(process.env.PORT);
   console.log(`Listening on port ${process.env.PORT}`);
   console.log(`Dirname: ${path.join(__dirname)}`);
+
+  fs.readdir(__dirname, function (err, items) {
+    console.log(items);
+
+    for (var i = 0; i < items.length; i++) {
+      console.log(items[i]);
+    }
+  });
 }
