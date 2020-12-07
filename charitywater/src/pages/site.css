@@ -1,8 +1,8 @@
 .site-wrap {
-  height: 100vh;
-  width: 100vw;
+  height: 1080px;
+  width: 1920px;
   background-image: url("../images/site.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: #181818;
 }
@@ -15,22 +15,34 @@
   width: 80%;
   /* background-color: rgba(250, 50, 10, 0.6); */
 }
+
 .site-data--inner-box {
   text-align: center;
   position: absolute;
   display: flex;
-  top: 40%;
-  left: 10%;
+  top: 0%;
+  height: 100%;
+  left: 18%;
   flex-direction: column;
   color: white;
 }
-.site-data--inner-box > h2 {
-  font-size: 180px;
+
+.site-spacer {
+  height: 100px;
 }
-.site-data--inner-box > span {
-  font-size: 250%;
+.site-data--inner-flex2 > h2 {
+  font-size: 10rem;
+}
+.site-data--inner-flex2 > span {
+  font-size: 150%;
 }
 
+.site-data--inner-flex1 > img {
+  margin-top: 10%;
+  margin-bottom: 150px;
+  width: 15vw;
+  height: auto;
+}
 .site-data--label {
   font-family: Proxima Nova;
 }

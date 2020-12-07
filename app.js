@@ -14,6 +14,7 @@ async function run() {
   // minimum security protocol recommended by express
   app.disable("x-powered-by");
   //
+  app.use(cors());
   app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "Content-type,Authorization");

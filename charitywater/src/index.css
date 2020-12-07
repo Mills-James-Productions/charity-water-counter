@@ -41,7 +41,8 @@ code {
 }
 
 h2 {
-  font-family: TiemposFine-Light;
+  font-family: Tiempos-Medium;
+  font-weight: 100;
   font-size: 140px;
   line-height: auto;
   margin: 0;
