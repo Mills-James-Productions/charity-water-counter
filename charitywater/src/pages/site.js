@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../images/logo.png";
 import CountUp from "react-countup";
 import "./site.css";
 
 const Site = ({ data }) => {
+  const [test_value, set_test_value] = useState(0);
+
+  useEffect(() => {
+    let timeout = setInterval(() => {
+      set_test_value(Math.floor(Math.random() * 500000));
+    }, 10000);
+    return () => {
+      clearInterval(timeout);
+    };
+  });
   return (
     <div className="site-wrap">
       <div className="site-data">
@@ -27,8 +37,22 @@ const Site = ({ data }) => {
                   end={data.parsedData.pledge_amount}
                   preserveValue={true}
                 />
+              ) : process.env.NODE_ENV === "development" ? (
+                <CountUp
+                  formattingFn={(value) =>
+                    Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 0,
+                    }).format(value)
+                  }
+                  prefix="$ "
+                  duration={2}
+                  end={test_value}
+                  preserveValue={true}
+                />
               ) : (
-                "$500,000"
+                ""
               )}
             </h2>
             <span className="site-data--label">RAISED </span>
@@ -42,8 +66,16 @@ const Site = ({ data }) => {
                   end={data.parsedData.people_served}
                   preserveValue={true}
                 />
+              ) : process.env.NODE_ENV === "development" ? (
+                <CountUp
+                  formattingFn={(value) => value.toLocaleString("en")}
+                  prefix="$ "
+                  duration={2}
+                  end={test_value}
+                  preserveValue={true}
+                />
               ) : (
-                "5000"
+                ""
               )}
             </h2>
             <span className="site-data--label">PEOPLE SERVED </span>

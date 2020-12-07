@@ -21,7 +21,7 @@
 .led-data--inner-flex-1 > img {
   margin: 0;
   height: auto;
-  width: 15vw;
+  width: 12vw;
 }
 
 .led-data--inner-flex-2 {
@@ -33,6 +33,8 @@
 }
 .led-data--inner-box {
   height: 1440px;
+  overflow: hidden;
+  width: 1000px;
   /* background-color: rgba(250, 50, 10, 0.6); */
   text-align: center;
   position: absolute;

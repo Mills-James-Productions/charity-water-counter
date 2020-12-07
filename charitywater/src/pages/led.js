@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../images/logo.png";
 import CountUp from "react-countup";
 import "./led.css";
 const LED = ({ data }) => {
+  const [test_value, set_test_value] = useState(0);
+
+  useEffect(() => {
+    let timeout = setInterval(() => {
+      set_test_value(Math.floor(Math.random() * 500000));
+    }, 10000);
+    return () => {
+      clearInterval(timeout);
+    };
+  });
   return (
     <div className="led-wrap">
       <div className="led-data">
@@ -26,6 +36,20 @@ const LED = ({ data }) => {
                   end={data.parsedData.pledge_amount}
                   preserveValue={true}
                 />
+              ) : process.env.NODE_ENV === "development" ? (
+                <CountUp
+                  formattingFn={(value) =>
+                    Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 0,
+                    }).format(value)
+                  }
+                  prefix="$ "
+                  duration={2}
+                  end={test_value}
+                  preserveValue={true}
+                />
               ) : (
                 "134"
               )}
@@ -40,6 +64,14 @@ const LED = ({ data }) => {
                   prefix="$ "
                   duration={2}
                   end={data.parsedData.people_served}
+                  preserveValue={true}
+                />
+              ) : process.env.NODE_ENV === "development" ? (
+                <CountUp
+                  formattingFn={(value) => value.toLocaleString("en")}
+                  prefix="$ "
+                  duration={2}
+                  end={test_value}
                   preserveValue={true}
                 />
               ) : (
