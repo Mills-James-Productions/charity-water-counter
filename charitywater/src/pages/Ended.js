@@ -39,41 +39,11 @@ const Ended = ({ data }) => {
       <div className="counter-inner counter--left ended"></div>
       <div className="counter-inner counter--center">
         <div className="counter--text counter--pledged">
-          <h2>
-            {data.parsedData ? (
-              <CountUp
-                formattingFn={(value) =>
-                  Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    minimumFractionDigits: 0,
-                  }).format(value)
-                }
-                prefix="$ "
-                duration={2}
-                end={data.parsedData.pledge_amount}
-                preserveValue={true}
-              />
-            ) : (
-              "0"
-            )}
-          </h2>
+          <h2>{data.parsedData ? data.parsedData.pledge_amount : "0"}</h2>
           <span className="counter-data--label">RAISED </span>
         </div>
         <div className="counter--text counter--served">
-          <h2>
-            {data.parsedData ? (
-              <CountUp
-                formattingFn={(value) => value.toLocaleString("en")}
-                prefix="$ "
-                duration={2}
-                end={data.parsedData.people_served}
-                preserveValue={true}
-              />
-            ) : (
-              "$0"
-            )}
-          </h2>
+          <h2>{data.parsedData ? data.parsedData.people_served : "$0"}</h2>
           <span className="counter-data--label">PEOPLE SERVED </span>
         </div>
       </div>
