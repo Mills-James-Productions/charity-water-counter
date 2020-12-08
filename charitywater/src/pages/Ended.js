@@ -41,7 +41,7 @@ const Ended = ({ data }) => {
         <div className="counter--text counter--pledged">
           <h2>
             {data.parsedData
-              ? `$ ${Intl.NumberFormat("en-US", {
+              ? `${Intl.NumberFormat("en-US", {
                   style: "currency",
                   currency: "USD",
                   minimumFractionDigits: 0,
@@ -53,11 +53,7 @@ const Ended = ({ data }) => {
         <div className="counter--text counter--served">
           <h2>
             {data.parsedData
-              ? `${Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                }).format(data.parsedData.people_served)}`
+              ? data.parsedData.people_served.toLocaleString()
               : "0"}
           </h2>
           <span className="counter-data--label">PEOPLE SERVED </span>
