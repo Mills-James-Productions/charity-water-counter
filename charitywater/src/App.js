@@ -5,6 +5,7 @@ import "./App.css";
 
 import LED from "./pages/led";
 import Site from "./pages/site";
+import WithCounter from "./pages/WithCounter";
 function App() {
   const [listening, setListening] = useState(false);
   const [data, setData] = useState({});
@@ -37,6 +38,8 @@ function App() {
             <Link to={"/site"}>Site Link</Link>
             <br />
             <Link to={"/led"}>LED Link</Link>
+            <br />
+            <Link to={"/with-counter"}>Counter Link</Link>
           </div>
         </Route>
         <Route path="/led">
@@ -44,6 +47,9 @@ function App() {
         </Route>
         <Route path="/site">
           <Site data={data} />
+        </Route>
+        <Route path="/with-counter">
+          <WithCounter data={data} />
         </Route>
       </Switch>
     </Router>

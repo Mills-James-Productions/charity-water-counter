@@ -1,0 +1,111 @@
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../images/bg-1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.2s;
+}
+.counter-wrap {
+  align-self: flex-end;
+  margin: auto;
+  width: 1900px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 280px;
+}
+
+.counter-wrap.ended {
+  background-image: url("../images/bg-brand.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 -120px;
+  overflow: hidden;
+}
+
+.counter-inner {
+  color: white;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.counter-inner h2 {
+  font-size: 5rem;
+}
+.counter--left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  border-right: 3px solid rgba(255, 255, 255, 0.32);
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.counter--left > span {
+  font-family: Proxima Nova;
+  font-size: 1.45rem;
+  letter-spacing: 5px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.counter-questions {
+  font-family: Tiempos-Light;
+  font-size: 1.5rem;
+}
+.counter--text {
+  height: auto;
+  width: 100%;
+}
+.counter--center {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.counter-data--label {
+  font-family: Proxima Nova;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.counter--right {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-left: 3px solid rgba(255, 255, 255, 0.32);
+}
+
+.counter--controls {
+  margin: auto;
+}
+.counter--controls > button {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 1rem;
+  height: 50px;
+  width: 250px;
+}
+
+button.start {
+  background-color: green;
+}
+
+button.stop {
+  background-color: red;
+  color: white;
+}
+
+div.ended {
+  border-left: none;
+  border-right: none;
+  background-color: rgba(0, 0, 0, 0);
+}
