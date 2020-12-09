@@ -7,7 +7,7 @@ import CountUp from "react-countup";
 import Ended from "./Ended";
 import "./withCounter.css";
 const WithCounter = ({ data }) => {
-  const NUM_TO_ADD = 1;
+  const NUM_TO_ADD = 5;
 
   const DELIMITER_TO_ADD = "m";
   const [ended, setEnded] = useState(false);
