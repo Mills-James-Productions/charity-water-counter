@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Moment from "react-moment";
 import moment from "moment";
 import CountUp from "react-countup";
+
 import "./withCounter.css";
 const Ended = ({ data }) => {
   const [ended, setEnded] = useState(false);
@@ -46,9 +48,9 @@ const Ended = ({ data }) => {
                   currency: "USD",
                   minimumFractionDigits: 0,
                 }).format(data.parsedData.pledge_amount)}`
-              : "$ 0"}
+              : "$0"}
           </h2>
-          <span className="counter-data--label">RAISED </span>
+          <p className="counter-data--label">RAISED </p>
         </div>
         <div className="counter--text counter--served">
           <h2>
@@ -56,7 +58,7 @@ const Ended = ({ data }) => {
               ? data.parsedData.people_served.toLocaleString()
               : "0"}
           </h2>
-          <span className="counter-data--label">PEOPLE SERVED </span>
+          <p className="counter-data--label">PEOPLE SERVED </p>
         </div>
       </div>
       <div className="counter-inner counter--right ended"></div>

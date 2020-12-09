@@ -6,6 +6,7 @@
   flex-direction: column;
   background-image: url("../images/bg-1.png");
   background-size: cover;
+  background-position: 0 -800px;
   background-repeat: no-repeat;
   transition: all 0.2s;
 }
@@ -21,14 +22,16 @@
 
 .counter-wrap.ended {
   background-image: url("../images/bg-brand.png");
-  background-size: contain;
+  background-size: 100%;
+  background-origin: center center;
   background-repeat: no-repeat;
-  background-position: 0 -120px;
+  background-position: 0 0px;
   overflow: hidden;
 }
 
 .counter-inner {
   color: white;
+  transition: all 2s;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
@@ -44,22 +47,25 @@
 
   text-align: center;
   border-right: 3px solid rgba(255, 255, 255, 0.32);
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 .counter--left > span {
   font-family: Proxima Nova;
   font-size: 1.45rem;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
 .counter-questions {
-  font-family: Tiempos-Light;
-  font-size: 1.5rem;
+  font-family: Proxima Nova;
+  font-size: 1.65rem;
+  line-height: 2rem;
 }
 .counter--text {
   height: auto;
+  letter-spacing: 5px;
+  font-variant-numeric: lining-nums;
   width: 100%;
 }
 .counter--center {
@@ -72,7 +78,7 @@
 .counter-data--label {
   font-family: Proxima Nova;
   font-size: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .counter--right {
@@ -80,8 +86,12 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.15);
   border-left: 3px solid rgba(255, 255, 255, 0.32);
+}
+
+.counter--timer {
+  letter-spacing: 5px;
 }
 
 .counter--controls {
@@ -108,4 +118,19 @@ div.ended {
   border-left: none;
   border-right: none;
   background-color: rgba(0, 0, 0, 0);
+  transition: opacity 2s;
+}
+.ender-appear {
+  opacity: 0;
+}
+.ender-enter-active {
+  opacity: 1;
+}
+
+.ender-exit {
+  opacity: 1;
+}
+
+.ender-exit-active {
+  opacity: 0;
 }
