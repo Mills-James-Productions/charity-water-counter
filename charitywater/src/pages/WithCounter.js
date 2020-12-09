@@ -7,14 +7,18 @@ import CountUp from "react-countup";
 import Ended from "./Ended";
 import "./withCounter.css";
 const WithCounter = ({ data }) => {
+  const NUM_TO_ADD = 1;
+
+  const DELIMITER_TO_ADD = "m";
   const [ended, setEnded] = useState(false);
   const [test_value, set_test_value] = useState(0);
   const [counter, setCounter] = useState({
     holdValue: "5:00",
+    holdValueCalc: moment(), // this is a moment object instead of a string
     started: false,
-    remaining: moment().to(moment().add(5, "m")),
     startTime: moment(),
-    endTime: moment().add(5, ""),
+    endTime: moment().add(NUM_TO_ADD, DELIMITER_TO_ADD),
+    ended: false,
   });
 
   useEffect(() => {
@@ -36,25 +40,40 @@ const WithCounter = ({ data }) => {
   //     };
   //   }, []);
   const startTime = () => {
-    if (!counter.started) {
-      let start = moment().add(5, "m");
+    //start counter from scratch
+    if (!counter.started && counter.holdValue === "5:00") {
+      let start = moment().add(NUM_TO_ADD, DELIMITER_TO_ADD);
       setCounter((prev) => ({ ...prev, started: true, endTime: start }));
+      //it has stopped at a non 5:00 value
+    } else if (!counter.started) {
+      console.log("the hard value");
+      setCounter((prev) => ({
+        ...prev,
+        started: true,
+        endTime: moment().subtract("milliseconds", prev.holdValueCalc),
+      }));
+      //it will be stopped and we should save the value
     } else {
-      let current = moment(counter.endTime);
-      current = moment().to(current);
+      var duration = moment
+        .duration(moment().diff(counter.endTime))
+        .asMilliseconds();
+
       setCounter((prev) => ({
         ...prev,
         started: false,
-        holdValue: `${current}`,
+        holdValueCalc: duration,
       }));
     }
   };
   const resetTime = () => {
-    let start = moment().add(5, "m");
-    setCounter((prev) => ({ ...prev, started: true, endTime: start }));
+    let new_end = moment().add(NUM_TO_ADD, DELIMITER_TO_ADD);
+    setCounter((prev) => ({ ...prev, endTime: new_end, holdValue: "5:00" }));
   };
   const splitFilter = (d) => {
-    return d.slice(2);
+    if (d[0] === "-") {
+      return d.slice(1);
+    }
+    return d;
   };
   return (
     <TransitionGroup className="end">
@@ -146,15 +165,29 @@ const WithCounter = ({ data }) => {
                 <h2 className="counter--timer">
                   {counter.started ? (
                     <Moment
+                      onChange={(v) => {
+                        console.log(v);
+                        setCounter((prev) => {
+                          return { ...prev, holdValue: v };
+                        });
+                        if (v === "00") {
+                          setCounter((prev) => {
+                            return { ...prev, started: false, holdValue: "" };
+                          });
+                          setEnded(true);
+                        }
+                      }}
                       interval={1000}
                       filter={splitFilter}
                       // date={counter.startTime}
-                      format="mm:ss"
                       trim
+                      format="mm:ss"
                       durationFromNow
                     >
                       {counter.endTime}
                     </Moment>
+                  ) : counter.ended ? (
+                    counter.endTime
                   ) : (
                     counter.holdValue
                   )}

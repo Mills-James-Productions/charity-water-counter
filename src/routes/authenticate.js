@@ -2,11 +2,11 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 require("dotenv").config();
+
 const authRouter = router.post("/login", (req, res, next) => {
-  console.log(req.body);
   const { username, password } = req.body;
   // Use your DB ORM logic here to find user and compare password
-  console.log(process.env);
+
   // I am using a simple array users which i made above
   if (username == process.env.ENV_USER && password == process.env.PASSWORD) {
     //If all credentials are correct do this

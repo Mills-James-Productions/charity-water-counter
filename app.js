@@ -52,6 +52,10 @@ async function run() {
     sendEventsToAll();
     res.json({ value: packet });
   });
+
+  app.get("/authenticate/verify", jwtMW, async (req, res) => {
+    res.send("token is verified and working");
+  });
   // error handling for un auth request
   app.use(function (err, req, res, next) {
     if (err.name === "UnauthorizedError") {
